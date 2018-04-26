@@ -1,0 +1,18 @@
+<div class="form-row">
+    <div class="{{ material_attrs.width|default:"col-12" }}">
+        <div class="form-group">
+            <div class="floating-label">
+                <label for="{{ widget.attrs.id }}">{{ material_attrs.label }}</label>
+                {% include 'django/forms/widgets/input.html' %}
+                {% if material_attrs.field_errors %}
+                    <div class="invalid-feedback">
+                        {% for e in material_attrs.field_errors %}
+                            <div>{{ e }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if material_attrs.help_text %}<small class="form-text text-muted">{{ material_attrs.help_text }}</small>{% endif %}
+            </div>
+        </div>
+    </div>
+</div>

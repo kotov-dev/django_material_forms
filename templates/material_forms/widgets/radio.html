@@ -1,0 +1,25 @@
+<div class="form-row">
+    <div class="{{ material_attrs.width|default:"col-12" }}">
+        <div class="pb-2 pt-2">{{ material_attrs.label }}</div>
+        {% for group, options, index in widget.optgroups %}
+            {% with is_last=forloop.last %}
+                {% for option in options %}
+                    {% with widget=option %}
+                        <div class="custom-control custom-radio">
+                            {% include "django/forms/widgets/input.html" %}
+                            <label class="custom-control-label"{% if widget.attrs.id %}
+                                   for="{{ widget.attrs.id }}"{% endif %}>{{ widget.label }}</label>
+                            {% if material_attrs.field_errors and is_last %}
+                                <div class="invalid-feedback">
+                                    {% for e in material_attrs.field_errors %}
+                                        {{ e }}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            {% endwith %}
+        {% endfor %}
+    </div>
+</div>

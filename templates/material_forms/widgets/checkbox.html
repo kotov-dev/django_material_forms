@@ -1,0 +1,18 @@
+<div class="form-row">
+    <div class="{{ material_attrs.width|default:"col-12" }}">
+        <div class="form-group">
+            <div class="custom-control {% if material_attrs.switch %}custom-switch{% else %}custom-checkbox{% endif %}">
+                {% include 'django/forms/widgets/input.html' %}
+                {% if material_attrs.switch %}<span class="custom-control-track"></span>{% endif %}
+                <label class="custom-control-label" for="{{ widget.attrs.id }}">{{ material_attrs.label }}</label>
+                {% if material_attrs.field_errors %}
+                    <div class="invalid-feedback">
+                        {% for e in material_attrs.field_errors %}
+                            <div>{{ e }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
